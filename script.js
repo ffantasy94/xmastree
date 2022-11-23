@@ -115,14 +115,13 @@ class World {
     this.time.delta * this.time.frequency * (1 + this.data * 0.2);
     this.extMaterial.uniforms.uTime.value +=
     this.time.delta * this.time.frequency;
-    //this.mesh.rotation.y += 0.0001 * this.time.delta * data
     for (const octa of this.octas.children) {
       octa.rotation.y += this.data ?
       0.001 * this.time.delta * this.data / 5 :
       0.001 * this.time.delta;
     }
     this.octas.rotation.y -= 0.0002 * this.time.delta;
-    this.mesh.rotation.y -= 0.0002 * this.time.delta;
+    //this.mesh.rotation.y -= 0.0002 * this.time.delta;
     this.externalSphere.rotation.y += 0.0001 * this.time.delta;
     this.render();
 
@@ -233,24 +232,24 @@ class World {
   addOctahedrons() {
     this.octas = new THREE.Group();
 
-    const x = 0, y = 0;
-    const heartShape = new THREE.Shape();
-    heartShape.moveTo( x + 5, y + 5 );
-    heartShape.bezierCurveTo( x + 5, y + 5, x + 4, y, x, y );
-    heartShape.bezierCurveTo( x - 6, y, x - 6, y + 7,x - 6, y + 7 );
-    heartShape.bezierCurveTo( x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19 );
-    heartShape.bezierCurveTo( x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7 );
-    heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
-    heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
-    const geometry = new THREE.ShapeGeometry( heartShape );
-     geometry.rotateZ(110)
-        geometry.translate( 5, 10, 10 )
-        geometry.scale(0.1, 0.1, 0)
-    const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
-    this.mesh = new THREE.Mesh( geometry, material ) ;
-    this.scene.add(this.mesh);
+    // const x = 0, y = 0;
+    // const heartShape = new THREE.Shape();
+    // heartShape.moveTo( x + 5, y + 5 );
+    // heartShape.bezierCurveTo( x + 5, y + 5, x + 4, y, x, y );
+    // heartShape.bezierCurveTo( x - 6, y, x - 6, y + 7,x - 6, y + 7 );
+    // heartShape.bezierCurveTo( x - 6, y + 11, x - 3, y + 15.4, x + 5, y + 19 );
+    // heartShape.bezierCurveTo( x + 12, y + 15.4, x + 16, y + 11, x + 16, y + 7 );
+    // heartShape.bezierCurveTo( x + 16, y + 7, x + 16, y, x + 10, y );
+    // heartShape.bezierCurveTo( x + 7, y, x + 5, y + 5, x + 5, y + 5 );
+    // const geometry = new THREE.ShapeGeometry( heartShape );
+    //  geometry.rotateZ(110)
+    //     geometry.translate( 5, 10, 10 )
+    //     geometry.scale(0.1, 0.1, 0)
+    // const material = new THREE.MeshBasicMaterial( { color: 0x00ff00 } );
+    // this.mesh = new THREE.Mesh( geometry, material ) ;
+    // this.scene.add(this.mesh);
 
-    this.octaGeometry = new THREE.OctahedronGeometry(0.2, 5);
+    this.octaGeometry = new THREE.OctahedronGeometry(0.2, 0);
     this.addOctahedron({ color: "red", scale: [1, 1.4, 1] });
     this.addOctahedron({
       color: "tomato",
